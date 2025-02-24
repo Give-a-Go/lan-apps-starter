@@ -3,9 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>LAN App</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
   </head>
   <body>
     <h1>Hello World</h1>
+    <p id="status">Connecting...</p>
+    <ul id="messages"></ul>
+
+    <script>
+      const socket = io();
+
+      socket.on("connect", () => {
+        document.getElementById("status").textContent = "Connected";
+      });
+
+      socket.on("message", (msg) => {
+        const li = document.createElement("li");
+        li.textContent = msg;
+        document.getElementById("messages").appendChild(li);
+      });
+    </script>
   </body>
 </html>

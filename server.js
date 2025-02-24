@@ -9,7 +9,7 @@ const io = socketIo(server);
 // Serve static files from the "public" directory
 app.use(express.static("public"));
 
-const PORT = 5555;
+const PORT = 3000;
 
 // Socket.IO connection handling
 io.on("connection", (socket) => {
