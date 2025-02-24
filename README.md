@@ -46,5 +46,5 @@ Open the project in your code editor and modify:
 - **Frontend**: Files inside the `public/` folder
 
 ## Have Fun Building!
-- By Give(a)Go 🚀
+- By [Give(a)Go](https://giveago.co) 🚀
 
