@@ -21,7 +21,7 @@ npm install
 
 ### 3. Start the Server
 ```sh
-node server.js
+npm run start
 ```
 By default, the server runs on: [http://localhost:3000](http://localhost:3000). Open this in your browser to verify it's working.
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/d3ed8155-55a2-4138-9a32-5849b0c55422" />
