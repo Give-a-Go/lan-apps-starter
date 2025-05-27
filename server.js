@@ -1,7 +1,7 @@
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
-
+const os = require("os");
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
@@ -27,7 +27,24 @@ io.on("connection", (socket) => {
   });
 });
 
+function getLocalIP() {
+  const interfaces = os.networkInterfaces();
+
+  for (const name of Object.keys(interfaces)) {
+    for (const iface of interfaces[name]) {
+      // Skip over internal (i.e. 127.0.0.1) and non-IPv4 addresses
+      if (iface.family === "IPv4" && !iface.internal) {
+        return iface.address;
+      }
+    }
+  }
+
+  return "127.0.0.1"; // fallback
+}
+
 // Start the server
 server.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(
+    `Server running on http://${getLocalIP()}:${PORT} \n(http://localhost:${PORT})`
+  );
 });
